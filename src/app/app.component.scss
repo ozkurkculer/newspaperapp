@@ -37,7 +37,8 @@
     padding-right: 20px;
     border-radius: 30px;
     background: #fff;
-    border: 0.5px $secondary-color solid;
+    border: 0.5px rgba($secondary-color, .3) solid;
+    transition: all .3s ease-in-out;
 }
 
 .searchbar:focus {
@@ -133,6 +134,25 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    min-height: 100dvh;
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px){
+    .searchbar-wrapper {
+        display: none;
+    }
+    .navbar {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .navbar {
+        gap: 1rem;
+    }
+    .navbar a:not(:last-child) {
+        padding-right: 1rem;
+    }
 }
