@@ -9,6 +9,7 @@ export const routes: Routes = [
     path: '',
     title: 'Home',
     component: HomeComponent,
+    pathMatch: 'full',
   },
   {
     path: 'about',
