@@ -1,0 +1,84 @@
+<div class="aboutpage">
+    <div class="name-section">
+        <div class="name-and-title">
+            <h1>Mehmet Emin Özkürkçüler</h1>
+            <p>Fullstack Developer</p>
+        </div>
+        <div class="contact">
+            <p>github.com/ozkurkculer</p>
+            <p>linkedin.com/in/ozkurkculer</p>
+            <p>bento.me/ozkurkculer</p>
+        </div>
+    </div>
+    <div class="details-section">
+        <div class="experience-section">
+            <h2>Experience</h2>
+            <div class="experience-content">
+                @for(experience of experiences; track $index){
+                <div class="experience-item">
+                    <div class="title-section">
+                        <h3>{{ experience.title }}</h3>
+                        <div class="company-date">
+                            <p>{{ experience.company }}</p>
+                            <span>|</span>
+                            <p>{{ experience.date }}</p>
+                        </div>
+                    </div>
+                    <p><span>Used Technologies:</span> {{ experience.usedTechnologies }}</p>
+                    <ul>
+                        @for(description of experience.description; track $index){
+                        <li>{{ description }}</li>
+                        }
+                    </ul>
+                </div>
+                }
+            </div>
+        </div>
+        <div class="skills-section">
+            <h2>Skills</h2>
+            <div class="skills-content">
+                @for(skill of skills; track $index){
+                <div class="skill-item">
+                    <div class="skill-title">
+                        <div id="skill-icon-{{$index}}" class="skill-icon"></div>
+                        <h3>{{ skill.category }} |</h3>
+                    </div>
+                    <p>
+                        @for(item of skill.items; track $index){
+                        {{ item }},
+                        }
+                    </p>
+                </div>
+                }
+            </div>
+        </div>
+        <div class="education-section">
+            <h2>Education</h2>
+            <div class="education-content">
+                <p>Necmettin Erbakan University, Konya</p>
+                <p>Bachelor’s Degree | 3.43 GPA</p>
+            </div>
+        </div>
+        <div class="projects-section">
+            <div class="title-section">
+                <h2>Projects</h2>
+                <p>You can see the projects at github.com/ozkurkculer, also project’s screenshots at read.cv/ozkurkculer
+                </p>
+            </div>
+
+            <div class="projects-content">
+                @for(project of projects; track $index){
+                <div class="project-item">
+                    <h3>{{ project.title }}</h3>
+                    <p><span>Used Technologies:</span> {{ project.usedTechnologies }}</p>
+                    <ul>
+                        @for(description of project.description; track $index){
+                        <li>{{ description }}</li>
+                        }
+                    </ul>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
