@@ -1,0 +1,47 @@
+<div class="categorypage">
+    <div class="filter-column">
+        <h3>Filters</h3>
+        <form [formGroup]="filterForm">
+            <div class="filter-group">
+                <label for="title">Title</label>
+                <input id="title" type="text" formControlName="title" placeholder="Filter by title" />
+            </div>
+            <div class="filter-group">
+                <label for="author">Author</label>
+                <input id="author" type="text" formControlName="author" placeholder="Filter by author" />
+            </div>
+            <div class="filter-group">
+                <label for="date">Date</label>
+                <input id="date" type="date" formControlName="date" placeholder="Filter by date" />
+            </div>
+        </form>
+    </div>
+
+    <div class="news-section">
+        @if(filteredArticles.length === 0) {
+        <p class="no-articles">No articles found</p>
+        } @else {
+        @for(article of filteredArticles; track $index) {
+        <div class="news-wrapper">
+            <p class="news-index">{{($index + 1).toString().padStart(2, '0')}}</p>
+            <div class="news-content">
+                <h2 class="content-title">{{article.title}}</h2>
+                @if(article.description) {
+                <p class="content-description">{{article.description}}</p>
+                } @else {
+                <p class="content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+                    quibusdam
+                    aliquam reprehenderit sequi debitis optio voluptatem culpa nisi facere! In!</p>
+                }
+                <p class="content-author">{{article.author}}</p>
+                <div class="content-publish">
+                    <p>{{article.publishedAt | date:'dd MMM'}}</p>
+                    <span>•</span>
+                    1 min read
+                </div>
+            </div>
+        </div>
+        }
+        }
+    </div>
+</div>
