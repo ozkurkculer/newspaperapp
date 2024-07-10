@@ -1,0 +1,44 @@
+<!-- slider.component.html -->
+<div class="slider-wrapper">
+  <div class="slider">
+    <button (click)="previousSlide()" class="prev">&#10094;</button>
+    <div class="slides">
+      @for(slide of slides; track $index;) {
+      <div class="slide" [class.active]="$index === currentIndex" [class.inactive]="$index !== currentIndex">
+        <div class="slide-content">
+          <div class="slide-image">
+            @if(slide.urlToImage === null) {
+            <img src="https://placehold.co/800x400" [class.active]="$index === currentIndex">
+            }
+            @else {
+            <img [src]="slide.urlToImage" [class.active]="$index === currentIndex">
+            }
+          </div>
+          <div class="slide-text">
+            <h2>{{slide.title}}</h2>
+            @if(slide.description) {
+            <p>{{slide.description}}</p>
+            }
+            @else {
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore quibusdam aliquam reprehenderit sequi
+              debitis optio voluptatem culpa nisi facere! In!</p>
+            }
+            <p class="slide-author">{{slide.author}}</p>
+            <p class="slide-publish-readtime">
+              {{slide.publishedAt | date:'dd MMM'}}
+              <span>•</span>
+              1 min read
+            </p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    <button (click)="nextSlide()" class="next">&#10095;</button>
+  </div>
+  <div class="dots">
+    @for(slide of slides; track $index;) {
+    <span [class.active]="$index === currentIndex" (click)="goToSlide($index)"></span>
+    }
+  </div>
+</div>
