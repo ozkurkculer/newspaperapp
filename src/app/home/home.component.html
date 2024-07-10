@@ -1,0 +1,38 @@
+<!-- home.component.html -->
+<div class="homepage">
+    <app-slider [slides]='sliderArticles' class="slider-section"></app-slider>
+
+    <div class="news-section">
+        @for(article of paginatedArticles; track $index) {
+        <div class="news-wrapper">
+            <p class="news-index">{{($index + ((currentPage - 1) * 10 ) + 1).toString().padStart(2, '0')}}</p>
+            <div class="news-content">
+                <h2 class="content-title">{{article.title}}</h2>
+                @if(article.description) {
+                <p class="content-description">{{article.description}}</p>
+                }
+                @else {
+                <p class="content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+                    quibusdam aliquam reprehenderit
+                    sequi
+                    debitis optio voluptatem culpa nisi facere! In!</p>
+                }
+                <p class="content-author">{{article.author}}</p>
+                <div class="content-publish">
+                    <p>{{article.publishedAt | date:'dd MMM'}}</p>
+                    <span>•</span>
+                    1 min read
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="pagination">
+        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">&#10094;</button>
+        @for(page of pages; track $index) {
+        <button (click)="goToPage(page)" [class.active]="currentPage === page">{{page}}</button>
+        }
+        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">&#10095;</button>
+    </div>
+</div>
